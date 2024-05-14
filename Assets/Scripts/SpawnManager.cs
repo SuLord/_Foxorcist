@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
 
 
     public GameObject ghostPrefab;
+    public GameObject greenGhostPrefab;
     public GameObject harpyPrefab;
     public GameObject lifeUpPrefab;
 
@@ -67,9 +68,9 @@ public class SpawnManager : MonoBehaviour
             }
             if (gameManager.isGameActive && spawnTimeGhost < 6f)
             {
-                Instantiate(ghostPrefab, new Vector3(16f, spawnPos.y, -1f), ghostPrefab.transform.rotation);
-                GameObject myInstance = Instantiate (ghostPrefab, new Vector3(16f + ghostOffset, secondSpawnPos.y, -1f), ghostPrefab.transform.rotation);
-                myInstance.GetComponent<Enemy>().sinSpeed = Random.Range(19f, 20);
+                Instantiate(greenGhostPrefab, new Vector3(16f, spawnPos.y, -1f), greenGhostPrefab.transform.rotation);
+                GameObject myInstance = Instantiate (greenGhostPrefab, new Vector3(16f + ghostOffset, secondSpawnPos.y, -1f), greenGhostPrefab.transform.rotation);
+                myInstance.GetComponent<Ghost>().sinSpeed = Random.Range(19f, 20);
             }
             //Loop back to wait
         }

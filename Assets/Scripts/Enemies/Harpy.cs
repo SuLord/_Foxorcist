@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
-public class Harpy : MonoBehaviour
+public class Harpy : Enemy
 {
-    public float speed = 7;
+    public GameObject bullet;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate(bullet, transform, worldPositionStays: false);
     }
-
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
-    }
+        MoveLeft();
 
+    }
 
 }
