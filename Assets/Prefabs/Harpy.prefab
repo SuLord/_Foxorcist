@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4417108386231452769}
   - component: {fileID: 1223535579799774412}
   - component: {fileID: 6771729305410024003}
-  - component: {fileID: 5792999400716362856}
   - component: {fileID: 6783818722302346916}
+  - component: {fileID: 5792999400716362856}
   - component: {fileID: 6173759454408325422}
+  - component: {fileID: 994234656106976589}
   m_Layer: 0
   m_Name: Harpy
   m_TagString: Enemy
@@ -87,18 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5792999400716362856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4405317913419644987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d905412d62d8b804e96c3984e60e2586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &6783818722302346916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -120,6 +109,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.74091256
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5792999400716362856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405317913419644987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d905412d62d8b804e96c3984e60e2586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6173759454408325422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   bullet: {fileID: 1732272334065596, guid: cdcb19fde9e8cba40b7bff849baf2c1b, type: 3}
+--- !u!114 &994234656106976589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405317913419644987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c6edc2df8522649946e93f323c1da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 10
 --- !u!1001 &2877931899721676285
 PrefabInstance:
   m_ObjectHideFlags: 0

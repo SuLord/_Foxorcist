@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8215238644997585345}
   - component: {fileID: 5350840682052272742}
   - component: {fileID: 4735138864293622764}
+  - component: {fileID: 9164215490445565463}
   m_Layer: 0
   m_Name: GreenGhost
   m_TagString: Enemy
@@ -35,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 2309757326365984682}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2278381818701231659
 MeshFilter:
@@ -135,7 +136,19 @@ MonoBehaviour:
   speed: 12
   sinSpeed: 10
   amplitude: 80
-  pointValue: 1
+--- !u!114 &9164215490445565463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328414620910240263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c6edc2df8522649946e93f323c1da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 7
 --- !u!1001 &2314056547299092302
 PrefabInstance:
   m_ObjectHideFlags: 0

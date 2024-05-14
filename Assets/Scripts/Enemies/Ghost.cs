@@ -6,7 +6,6 @@ public class Ghost : Enemy
 {
     public float sinSpeed;
     public float amplitude = 40;
-    public int pointValue;
 
     void Update()
     {

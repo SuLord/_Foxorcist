@@ -5,12 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class HarpyBullet : MonoBehaviour
+public class HarpyBullet : Enemy
 {
-    public float speed = 10f;
+    [SerializeField] float bulletSpeed = 10f;
     private float xRange;
     public Transform target;
-    public bool aim;
+    [SerializeField] bool aim;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class HarpyBullet : MonoBehaviour
         if (transform.parent.position.x < xRange)
         {
             
-            transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * bulletSpeed * Time.deltaTime;
             aim = false;
         }
     }

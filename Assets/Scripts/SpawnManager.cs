@@ -1,27 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
-
-
     public GameObject ghostPrefab;
     public GameObject greenGhostPrefab;
     public GameObject harpyPrefab;
     public GameObject lifeUpPrefab;
 
+    public Vector3[] spawnPoints = new Vector3[3];
+
     private float harpySpawn = 5.8f;
     private float spawnTimeHarpy;
-    public float spawnTimeGhost;
+    [SerializeField] float spawnTimeGhost;
 
     private GameManager gameManager;
 
-    public float initialSpawnrateGhost = 7f;
-    public float minSpawnrateGhost = 1f;
-    public float initialSpawnrateHarpy = 10f;
-    public float minSpawnrateHarpy = 3f;
-    public float difficultyScale = 2f;
+    [SerializeField] public float initialSpawnrateGhost = 7f;
+    [SerializeField] public float minSpawnrateGhost = 1f;
+    [SerializeField] public float initialSpawnrateHarpy = 10f;
+    [SerializeField] public float minSpawnrateHarpy = 3f;
+    [SerializeField] public float difficultyScale = 2f;
     private float gameTimerStart = 0;
     private float ghostOffset;
 
@@ -105,11 +107,11 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(12f);
 
             // Spawn Enemy
-            float spawnRange = Random.Range(1f, 5.8f);
+            int spawn = Random.Range(0, spawnPoints.Length);
 
             if (gameManager.isGameActive && gameManager.currentLives < 3)
             {
-                Instantiate(lifeUpPrefab, new Vector3(16f, spawnRange, -1f), lifeUpPrefab.transform.rotation);
+                Instantiate(lifeUpPrefab, spawnPoints[spawn], Quaternion.identity);
             }
             //Loop back to wait
         }

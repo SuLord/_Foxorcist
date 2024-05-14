@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 95460592423374290}
   - component: {fileID: 5461713700618818674}
   - component: {fileID: 5360740808954944702}
+  - component: {fileID: 9125870337702103774}
   m_Layer: 0
   m_Name: SM_Rock_Boulder_01
   m_TagString: Enemy
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &33264041529804706
 MeshFilter:
@@ -141,5 +142,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  bulletSpeed: 10
   target: {fileID: 5827098019633660980, guid: 2cc3b569cb73062448830d6a831ab63e, type: 3}
   aim: 0
+--- !u!114 &9125870337702103774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732272334065596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c6edc2df8522649946e93f323c1da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 1

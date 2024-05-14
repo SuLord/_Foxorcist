@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 5;
-
     void Update()
     {
         MoveLeft();
@@ -15,4 +14,6 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.left * Time.deltaTime * speed, Space.World); // Move left
     }
+
+
 }

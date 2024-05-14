@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float DegreesPerSecond = 1000f; // degrees per second / Flip variables
+    [SerializeField] float DegreesPerSecond = 1000f; // degrees per second / Flip variables
     private Vector3 currentRot, targetRot;
-    public bool rotating = false;
-
-    bool goingUp = false; // Jump variables
+    public bool rotating { get; private set; }
+    public bool goingUp { get; private set; } // Jump variables
     public float jumpForce = 30f;
     private float velocity;
     public float botBound = -1.45f;
@@ -25,8 +24,8 @@ public class PlayerController : MonoBehaviour
     private float xCenter = 0.6f;
     private float yCenter = 1.6f;
 
-    public float cooldownTime = 0.1f;
-    public float lastUsedTime;
+    [SerializeField] float cooldownTime = 0.1f;
+    [SerializeField] float lastUsedTime;
 
     public ParticleSystem hitParticles;
     public ParticleSystem killedParticles;
@@ -34,12 +33,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem lostLifeParticles;
 
     private GameManager gameManager;
-    private int pointValue = 1;
-
 
     // Start is called before the first frame update
     void Start()
     {
+        rotating = false;
+        goingUp = false;
         currentRot = transform.eulerAngles;
         playerCollider = GetComponent<BoxCollider>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -134,7 +133,6 @@ public class PlayerController : MonoBehaviour
         // Player killed
         if (other.CompareTag("Enemy") && !rotating && !goingUp)
         {
-            print("Hit");
             lostLifeParticles.transform.position = other.gameObject.transform.position;
             lostLifeParticles.Play();
             gameManager.currentLives--;
@@ -146,40 +144,6 @@ public class PlayerController : MonoBehaviour
                 gameManager.GameOver();
                 Destroy(gameObject);
             }
-        }
-
-        // Player flips and destroys
-
-        if (other.CompareTag("Enemy") && rotating)
-        {
-            Destroy(other.gameObject);
-            print("Flipped Enemy");
-            hitParticles.transform.position = other.gameObject.transform.position;
-            hitParticles.Play();
-            gameManager.UpdateScore(pointValue);
-        }
-
-        // Player jumps and destroys
-
-        if (other.CompareTag("Enemy") && goingUp)
-        {
-            Destroy(other.gameObject);
-            print("Jumped Enemy");
-            hitParticles.transform.position = other.gameObject.transform.position;
-            hitParticles.Play();
-            gameManager.UpdateScore(pointValue);
-        }
-
-        // Player picks up Power Up
-
-        if (other.CompareTag("PowerUp"))
-        {
-            Destroy(other.gameObject);
-            print("Powerup!");
-            powerUpParticles.transform.position = other.gameObject.transform.position;
-            powerUpParticles.Play();
-            gameManager.currentLives++;
-            gameManager.UpdateLives();
         }
     }
 }

@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostPrefab: {fileID: 2015954056842155726, guid: a0081bd0beffc3b47abddc1ba92bc267, type: 3}
+  greenGhostPrefab: {fileID: 2328414620910240263, guid: 780478e3f98bd6e4cb96b237c0f9238c, type: 3}
   harpyPrefab: {fileID: 4405317913419644987, guid: 8a5bfcf3c6dd0e94fadd400afd02fde8, type: 3}
   lifeUpPrefab: {fileID: 4892494993169331471, guid: 5a81782b2a0a05c4aa71234759d24c94, type: 3}
   spawnTimeGhost: 0

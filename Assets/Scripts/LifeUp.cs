@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LifeUp : MonoBehaviour
 {
-    public float speed = 5;
-    private float leftBound = -15;
+    [SerializeField] float speed = 5;
+    private PlayerController playerController;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -19,12 +21,19 @@ public class LifeUp : MonoBehaviour
         // Move Left
 
         transform.Translate(Vector3.left * Time.deltaTime * speed);
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // Player picks up Power Up
 
-        // Destroy out of bounds
-        if (transform.position.x < leftBound)
+        if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
+            playerController.powerUpParticles.transform.position = gameObject.transform.position;
+            playerController.powerUpParticles.Play();
+            gameManager.currentLives++;
+            gameManager.UpdateLives();
         }
     }
 }
