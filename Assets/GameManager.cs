@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI bestScore;
+    public TextMeshProUGUI yourScore;
     public Button restartButton;
     private int score;
     public int currentLives;
 
     public bool isGameActive;
-
-    // Start is called before the first frame update
     void Start()
     {
         isGameActive = true;
@@ -24,12 +24,6 @@ public class GameManager : MonoBehaviour
         currentLives = 3;
         UpdateScore(0);
         UpdateLives();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateLives()
@@ -47,6 +41,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        bestScore.gameObject.SetActive(true);
+        yourScore.gameObject.SetActive(true);
+
         isGameActive = false;
         string[] tagsToDisable =
             {

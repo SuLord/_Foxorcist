@@ -104,7 +104,7 @@ public class SpawnManager : MonoBehaviour
         while (lifeUpPrefab == true && gameManager.isGameActive )
         {
             // Wait a set time
-            yield return new WaitForSeconds(12f);
+            yield return new WaitForSeconds(20f);
 
             // Spawn Enemy
             int spawn = Random.Range(0, spawnPoints.Length);
