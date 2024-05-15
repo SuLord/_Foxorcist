@@ -7,27 +7,18 @@ public class LifeUp : MonoBehaviour
     [SerializeField] float speed = 5;
     private PlayerController playerController;
     private GameManager gameManager;
-
-    // Start is called before the first frame update
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        // Move Left
-
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
+        transform.Translate(Vector3.left * Time.deltaTime * speed); // Move Left
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        // Player picks up Power Up
-
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) // Player picks up Power Up
         {
             Destroy(gameObject);
             playerController.powerUpParticles.transform.position = gameObject.transform.position;

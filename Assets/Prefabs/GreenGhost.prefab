@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 2309757326365984682}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2278381818701231659
 MeshFilter:
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c6edc2df8522649946e93f323c1da9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticles: {fileID: 19811986, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   pointValue: 7
 --- !u!1001 &2314056547299092302
 PrefabInstance:

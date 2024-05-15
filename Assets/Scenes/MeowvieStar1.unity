@@ -1765,7 +1765,7 @@ MonoBehaviour:
   minSpawnrateGhost: 3
   initialSpawnrateHarpy: 20
   minSpawnrateHarpy: 4
-  difficultyScale: 0.1
+  difficultyScale: 0.3
 --- !u!4 &1885653906
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PointsDestroyed : MonoBehaviour
 {
+    //ABSTRACTION
     [SerializeField] int pointValue;
     private PlayerController playerController;
     private GameManager gameManager;
@@ -14,9 +15,7 @@ public class PointsDestroyed : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        // Player flips and destroys
-
-        if (other.CompareTag("Player") && playerController.rotating)
+        if (other.CompareTag("Player") && playerController.rotating) // Player flips and destroys
         {
             Destroy(gameObject);
             print("Flipped Enemy");
@@ -24,10 +23,7 @@ public class PointsDestroyed : MonoBehaviour
             playerController.hitParticles.Play();
             gameManager.UpdateScore(pointValue);
         }
-
-        // Player jumps and destroys
-
-        if (other.CompareTag("Player") && playerController.goingUp)
+        if (other.CompareTag("Player") && playerController.goingUp) // Player jumps and destroys
         {
             Destroy(gameObject);
             print("Jumped Enemy");

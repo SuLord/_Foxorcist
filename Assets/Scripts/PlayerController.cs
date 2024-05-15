@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float DegreesPerSecond = 1000f; // degrees per second / Flip variables
     private Vector3 currentRot, targetRot;
-    public bool rotating { get; private set; }
+    public bool rotating { get; private set; } // ENCAPSULATION
     public bool goingUp { get; private set; } // Jump variables
-    public float jumpForce = 30f;
+    private float castRange = 10;
+    [SerializeField] float jumpForce = 30f;
     private float velocity;
-    public float botBound = -1.45f;
-    public float height = 4.7f;
-
-    public float castRange = 10;
+    [SerializeField] float botBound = -1.45f;
+    [SerializeField] float height = 4.7f;
 
     BoxCollider playerCollider; // Collider variables
-
     private float xSize = 4f;
     private float xStartSize;
     private float ySize = 3f;
@@ -28,13 +27,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lastUsedTime;
 
     public ParticleSystem hitParticles;
-    public ParticleSystem killedParticles;
+    [SerializeField] ParticleSystem killedParticles;
     public ParticleSystem powerUpParticles;
-    public ParticleSystem lostLifeParticles;
+    [SerializeField] ParticleSystem lostLifeParticles;
 
     private GameManager gameManager;
-
-    // Start is called before the first frame update
     void Start()
     {
         rotating = false;
@@ -45,32 +42,32 @@ public class PlayerController : MonoBehaviour
         yStartSize = playerCollider.size.y;
         xStartSize = playerCollider.size.x;
     }
-
-    // Update is called once per frame
     void Update()
     {
-
-        // Rotates 180° when clicking (will attack at the same time)
-
+        // ABSTRACTION
+        InputRotate();
+        InputJump();
+    }
+    private void InputRotate()
+    {
+        // Rotates 180° when clicking
         if (Input.GetKeyDown(KeyCode.Mouse0) && velocity == 0 && Time.time > lastUsedTime + cooldownTime)
         {
             StartCoroutine(Rotate());
-
             playerCollider.size = new Vector3(xSize, ySize, playerCollider.size.z);
             playerCollider.center = new Vector3(xCenter, yCenter, playerCollider.center.z);
             lastUsedTime = Time.time;
         }
-
+    }
+    private void InputJump()
+    {
         // Raycast
-
         Vector3 direction = Vector3.up;
         Ray theRay = new Ray(transform.position + transform.up, transform.TransformDirection(direction * castRange));
         Debug.DrawRay(transform.position, transform.TransformDirection(direction * castRange));
 
         // Jumps when on the upper side and pressing space
-
         if (Physics.Raycast(theRay, out RaycastHit hit, castRange))
-
         {
             if (Input.GetKeyDown(KeyCode.Space) && hit.collider.tag == "Roof")
             {
@@ -84,15 +81,13 @@ public class PlayerController : MonoBehaviour
         transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
 
         // Falls down after a short time
-
         if (transform.position.y > height)
         {
             StartCoroutine(Fall());
         }
 
-            // Doesn't fall down to infinity
-
-            if (transform.position.y < botBound)
+        // Doesn't fall down to infinity
+        if (transform.position.y < botBound)
         {
             transform.position = new Vector3(transform.position.x, botBound, 0f);
             velocity = 0f;
@@ -127,10 +122,9 @@ public class PlayerController : MonoBehaviour
         goingUp = false;
         lastUsedTime = Time.time;
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        // Player killed
+        // Player hit/killed
         if (other.CompareTag("Enemy") && !rotating && !goingUp)
         {
             lostLifeParticles.transform.position = other.gameObject.transform.position;

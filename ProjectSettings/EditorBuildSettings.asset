@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: dbcf4ea85f7c960408ee1e85d5069285
+  - enabled: 1
     path: Assets/Scenes/MeowvieStar1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
